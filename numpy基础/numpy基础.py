@@ -66,3 +66,12 @@ print(np.tri(3,4,-1))
 print(np.tril(np.arange(1,13).reshape(4,3),0))
 #获取矩阵的上三角形
 print(np.triu(np.arange(1,13).reshape(4,3),0))
+
+#查看numpy版本
+print(np.__version__)
+
+x=np.ones([10,10,3])
+out=np.reshape(x,[-1,150])
+print(x)
+print(out)
+assert np.allclose(out,np.ones([10,10,3]).reshape([-1,150]))
