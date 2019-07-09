@@ -1,6 +1,8 @@
 import numpy as np
+#########################
+#####  numpy练习题1  #####
+#########################
 print(np.empty([2,2], dtype=int))
-
 #创建与X一样的数组
 X = np.array([[1,2,3], [4,5,6]], np.int32)
 Y=np.empty_like(X)
@@ -67,6 +69,11 @@ print(np.tril(np.arange(1,13).reshape(4,3),0))
 #获取矩阵的上三角形
 print(np.triu(np.arange(1,13).reshape(4,3),0))
 
+
+#########################
+#####  numpy练习题2  #####
+#########################
+
 #查看numpy版本
 print(np.__version__)
 #创建【10,10,3】的元素为1的数组，reshape为【2,150】
@@ -115,3 +122,60 @@ out1=np.column_stack((x,y))
 out2=np.squeeze(np.dstack((x,y)))
 out3=np.vstack((x,y)).T
 print(out1,'\n',out2,'\n',out3,'\n')
+#将[[1],[2],[3]]和[[4],[5],[6]]转化为[[1,4],[2,5],[3,6]]
+x=np.array([[1],[2],[3]])
+y=np.array([[4],[5],[6]])
+out=np.dstack((x,y))
+print(out)
+#分离数组按[4,6]
+x=np.arange(1,10)
+print(x)
+print(np.split(x,[4,6]))
+#在第三维度分离数组
+x=np.arange(16).reshape(2,2,4)
+print(x)
+out1=np.split(x,[2],2)
+print(out1)
+out2=np.dsplit(x,[2])
+print(out2)
+#第二维度分离数组
+x=np.arange(16).reshape((4,4))
+print(x)
+out1=np.hsplit(x,2)
+out2=np.split(x,2,1)
+print(out1,'\n',out2,'\n')
+#第一维度分离数组
+x=np.arange(16).reshape((4,4))
+print(x)
+out1=np.vsplit(x,2)
+out2=np.split(x,2,0)
+print(out1,'\n',out2,'\n')
+#数组[0,1,2]转换为[[0,1,2,0,1,2],[0,1,2,0,1,2]],横向纵向复制
+x=np.array([0,1,2])
+out1=np.tile(x,[2,2])
+out2=np.resize(x,[2,6])
+print(out1,'\n',out2,'\n')
+#数组每个元素转为行向量，每个元素复制2次
+x=np.array([0,1,2])
+print(np.repeat(x,2))
+#删除数组左右边上的0
+x=np.array([0,0,0,1,2,3,0,2,1,0,0,2,0])
+out=np.trim_zeros(x)
+print(out)
+#去掉重复元素，按大小排序，同时返回新数组元素在原数组出现几次
+x=np.array([2,2,1,5,4,5,1,2,3])
+print(x)
+u,indices=np.unique(x,return_counts=True)
+print(u,'\n',indices)
+#上下翻转矩阵
+x=np.array([[1,2],[3,4]])
+out1=np.flipud(x)
+out2=x[::-1,:]
+print(out1,'\n',out2,'\n')
+#旋转90度
+x=np.array([[1,2],[3,4]])
+print(np.rot90(x))
+#
+x=np.arange(1,9).reshape([2,4])
+print(x)
+print(np.roll(x,1,1))
