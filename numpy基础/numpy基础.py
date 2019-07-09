@@ -69,9 +69,10 @@ print(np.triu(np.arange(1,13).reshape(4,3),0))
 
 #查看numpy版本
 print(np.__version__)
-
+#创建【10,10,3】的元素为1的数组，reshape为【-1,150】
 x=np.ones([10,10,3])
 out=np.reshape(x,[-1,150])
 print(x)
 print(out)
 assert np.allclose(out,np.ones([10,10,3]).reshape([-1,150]))
+
